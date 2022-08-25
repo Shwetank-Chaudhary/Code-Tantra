@@ -1,0 +1,32 @@
+class Node:
+	def __init__(self):
+		self.info=None
+		self.next=None
+class LinkedList:
+	def __init__(self):
+		self.start=Node()
+	def insert(self):
+		node=Node()
+		if self.start==None:
+			self.start.info=input("Enter element ")
+		else:
+			node.info=input("Enter element ")
+			node.next=self.start
+			self.start=node
+	def display(self):
+		temp=self.start
+		print("The Inserted elements at the front end are :")
+		while temp.next:
+			print(temp.info)
+			temp=temp.next
+l=LinkedList()
+while True:
+	op=int(input("Select a Operation: 1.Insertion 2.Display 3.Quit "))
+	if op==1:
+		l.insert()
+	elif op==2:
+		l.display()
+	elif op==3:
+		break
+	else:
+		print("Invalid Option!!!")

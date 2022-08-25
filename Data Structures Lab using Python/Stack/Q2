@@ -1,0 +1,50 @@
+class Conversion:
+	def __init__(self,maxl):
+		self.array=[]
+		self.top=-1
+		self.maxl=maxl
+		self.output=[]
+		self.precedence={'+':1,'-':1,"*":2,"/":2}
+	def pop(self):
+		if self.top!=-1:
+			self.top-=1
+			return self.array.pop()
+		else:
+			return '&'
+	def push(self,ele):
+		self.array.append(ele)
+		self.top+=1
+	def peek(self):
+		return self.array[-1]
+	def notGreater(self,i):
+		try:
+			a= self.precedence[i]
+			b=self.precedence[self.peek()]
+			return True if a<=b else False
+		except KeyError:
+			return False
+	def intoPost(self,exp):
+		for i in exp:
+			if i.isalpha():
+				self.output.append(i)
+			elif i == '(':
+				self.push(i)
+			elif i==')':
+				while(self.top!=-1) and (self.peek()!='('):
+					a=self.pop()
+					self.output.append(a)
+				if self.top!=-1 and self.peek()!='(':
+					return -1
+				else:
+					self.pop()
+			else:
+				while(self.top!=-1 and self.notGreater(i)):
+					self.output.append(self.pop())
+				self.push(i)
+		while self.top!=-1:
+			self.output.append(self.pop())
+		return "".join(self.output)
+infix=input("Enter infix expression")
+print("infix expression:  "+infix)
+s1=Conversion(len(infix))
+print("postfix expression: ",s1.intoPost(infix))

@@ -1,0 +1,11 @@
+import array
+n=int(input("Enter how many elements you want:"))
+print("Enter numbers in array: ")
+l=[]
+for i in range(n):
+	l.append(int(input("num :")))
+arr=array.array('i',l)
+print("ARRAY:  ",end='[')
+for i in range(n-1):
+	print(arr[i],end=', ')
+print(str(arr[n-1])+']')

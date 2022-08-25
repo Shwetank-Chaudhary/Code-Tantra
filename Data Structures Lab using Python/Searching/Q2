@@ -1,0 +1,21 @@
+import array
+size=int(input("Enter size of list: "))
+l=[int(input("Enter your number: ")) for _ in range(size)]
+l.sort()
+print("After sorting list is: ",l)
+n=int(input("The number to search for: "))
+a=array.array('i',l)
+flag=1
+ub,lb=len(a)-1,0
+while(lb<=ub):
+	mid=(ub+lb)//2
+	if a[mid]==n:
+		print(str(n)+" was found at index "+str(mid)+".")
+		flag=0
+		break
+	elif a[mid]>n:
+		ub=mid-1
+	elif a[mid]<n:
+		lb=mid+1
+if flag==1:
+	print(n,"was not found.")

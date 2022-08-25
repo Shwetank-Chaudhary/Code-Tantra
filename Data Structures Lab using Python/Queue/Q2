@@ -1,0 +1,43 @@
+class Cqueue:
+	que = []	
+	def insert(self,len_of_queue):			
+		if len(self.que)==len_of_queue:				
+			datar= input("Enter Element ")				
+			print(" Queue is Full")				
+		else:					
+			data = input("Enter Element ")			
+			self.que.append(data)	
+	def remo(self):			
+		if len(self.que)==0:			
+			print("Queue is empty")				
+		else:					
+			pdta = self.que.pop(0)					
+			print("Element is Successfully Removed")
+	def display(self):				
+		if len(self.que)==0:				
+			print("Queue is Empty")				
+		else:						
+			print("Elements in the circular Queue are:")				
+		for i in self.que:					
+			print(i)
+if __name__=="__main__":	
+	obj =Cqueue()	
+	length_of_queue=int(input("Enter size of Queue "))	
+	inn = 0		
+	while True:			
+		choice = input("Select a operarion 1.Enqueue 2.Dequeue 3.Display 4.Quit ")			
+		if choice =='1':				
+			obj.insert(length_of_queue)					
+			if (length_of_queue>inn):					
+				inn+=1			
+		elif choice == '2':				
+			obj.remo()					
+			inn-=1				
+		elif choice =='3':				
+			obj.display()				
+			if inn == length_of_queue:				
+				print("Queue is Full")			
+		elif choice == '4':					
+			exit()			
+		else:				
+			print("wrong choice try again")			

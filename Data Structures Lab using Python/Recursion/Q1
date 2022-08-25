@@ -1,0 +1,6 @@
+n=int(input("Enter no ofelements"))
+print("enter elements")
+a=[int(input()) for _ in range(n)]
+print("Given array is ",a,sep="\n")
+a.sort()
+print("Sorted array is ",a,sep="\n")

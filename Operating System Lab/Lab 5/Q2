@@ -1,0 +1,50 @@
+#include<conio.h>
+void main()
+{
+	int n,Pname[10],bt[10],su[10],wt[10],tat[10],temp;
+	float totalWT=0, totalTAT=0;
+	printf("Enter the number of processes:");
+	scanf("%d", &n);
+	for(int i=0; i<n; i++)
+	{
+		Pname[i]=i;
+		printf("Enter the Burst Time of Process %d:",i);
+		scanf("%d",&bt[i]);
+		printf("System/User Process (0/1) ?");
+		scanf("%d",&su[i]);
+	}
+	for(int i=0; i<n; i++)
+	{
+		for(int k=i+1; k<n; k++)
+		{
+			if(su[i]>su[k])
+			{
+				temp = Pname[i];
+				Pname[i] = Pname[k];
+				Pname[k] = temp;
+				temp = bt[i];
+				bt[i] = bt[k];
+				bt[k] = temp;
+				temp = su[i];
+				su[i] = su[k];
+				su[k] = temp;
+			}
+		}
+	}
+	totalWT = wt[0] = 0;
+	totalTAT = tat[0] = bt[0];
+	for(int i=1; i<n; i++)
+	{
+		wt[i] = wt[i-1] + bt[i-1];
+		tat[i] = tat[i-1] + bt[i];
+		totalWT = totalWT + wt[i];
+		totalTAT = totalTAT + tat[i];
+	}
+	printf("PROCESS\t\t SYSTEM/USER PROCESS \tBURST TIME\tWAITING TIME\tTURNAROUND TIME");
+	for(int i=0; i<n; i++)
+	{
+		printf("\n%d \t\t %d \t\t %d \t\t %d \t\t %d ",Pname[i],su[i],bt[i],wt[i],tat[i]);
+	}
+	printf("\nAverage Waiting Time is --- %f",totalWT/n);
+	    printf("\nAverage Turnaround Time is --- %f",totalTAT/n);
+}

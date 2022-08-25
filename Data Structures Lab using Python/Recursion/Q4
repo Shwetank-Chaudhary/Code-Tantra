@@ -1,0 +1,18 @@
+def binary(a,ele,l,h):
+	if h>=l:
+		mid=(l+h)//2
+		if a[mid]==ele:
+			return mid
+		elif a[mid]>ele:
+			return binary(a,ele,l,mid-1)
+		elif a[mid]<ele:
+			return binary(a,ele,mid+1,h)
+	else:
+		return -1
+n= int(input("Enter no of elements"))
+print("enter elements")
+a=[int(input()) for _ in range(n)]
+e=int(input(" Which element you want to search"))
+pos=binary(a,e,0,n-1)
+print("The element is present at index ",pos)
+		

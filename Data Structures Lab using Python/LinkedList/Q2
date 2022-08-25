@@ -1,0 +1,28 @@
+l = []
+def insert():
+	a=int(input("Enter Element "))
+	l.append(a)
+def deletion():	
+	l.reverse()	
+	b=int(input("Enter a position "))
+	try:	
+		l.pop(b)	
+	except IndexError:	
+		print("Position is more than number of nodes")	
+		l.reverse()
+def display():	
+	l.reverse()	
+	for i in range(0, len(l)):	
+		print(l[i])
+while(True):
+	a=int(input("Select an Operation:\n1.Insert\n2.Deletion\n3.Display\n4.Quit\t"))	
+	if a ==1:	
+		insert()	
+	elif a==2:	
+		deletion()
+	elif a==3:	
+		display()	
+	elif a==4:	
+		break
+	else:	
+		print("Invalid Operation")

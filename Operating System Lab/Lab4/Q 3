@@ -1,0 +1,41 @@
+#include<stdio.h>
+void main()
+{
+	char Pname[10][10],t[10];
+	int at[10],bt[10],start[10],wt[10],tat[10],ft[10],pr[10],n,temp;
+	float totalWT=0,totalTAT=0;
+	printf("Enter the number of process:");
+	scanf("%d", &n);
+	for(int i=0; i<n; i++)
+	{
+		printf("Enter process name,arrivaltime,execution time & priority:");
+		scanf("%s %d %d %d", &Pname[i], &at[i], &bt[i], &pr[i]);
+	}
+	for(int i=0; i<n; i++)
+	{
+		if(i==0)
+		{
+			start[i]=at[i];
+			wt[i]=start[i]-at[i];
+			ft[i]=start[i]+bt[i];
+			tat[i]=ft[i]-at[i];
+		}
+		else
+		{
+			start[i]=ft[i-1];
+			wt[i]=start[i]-at[i];
+			ft[i]=start[i]+bt[i];
+			tat[i]=ft[i]-at[i];
+		}
+		totalWT+=wt[i];
+		totalTAT+=tat[i];
+	}
+	printf("Pname\tarrivaltime\texecutiontime\tpriority\twaitingtime\ttatime\n");
+	for(int i=0; i<n; i++)
+	{
+		printf("%s\t%5d\t\t%5d\t\t%5d\t\t%5d\t\t%5d\n",Pname[i],at[i],bt[i],pr[i],wt[i],tat[i]);
+	}
+	printf("Average waiting time is:%f\n",totalWT/n);
+	printf("Average turnaroundtime is:%f\n",totalTAT/n);
+}
+	

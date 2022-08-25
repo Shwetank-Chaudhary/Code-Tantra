@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int n,name[n],at[n],bt[n],start[n],finish[n],tat[n],wt[n];
+	float atat,awt;
+	printf("Enter the number of processes: ");
+	scanf("%d",&n);
+	for(int i=0;i<n;i++)
+	{
+		printf("Enter the Process Name, Arrival Time & Burst Time:");
+		scanf("%d%d%d",&name[i],&at[i],&bt[i]);
+	}
+	printf("Process Name\tArrival Time\tBurst Time\n");
+	for(int i=0;i<n;i++)
+	printf("    %d\t        %d\t        %d\n",name[i],at[i],bt[i]);
+	
+	printf("PName     Arrtime     Bursttime    Start     WT   TAT   Finish\n");
+	start[0]=at[0];
+	finish[0]=start[0]+bt[0];
+	for(int i=0;i<n;i++)
+	{
+		if(i>0)
+			start[i]=finish[i-1];
+		finish[i]=start[i]+bt[i];
+		wt[i]=start[i]-at[i];
+		tat[i]=bt[i]+wt[i];
+	}
+	printf("%d\t  %d\t\t  %d\t  %d\t   %d\t  %d\t  %d\n",name[0],at[0],bt[0],start[0],wt[0],tat[0],finish[0]);
+	for(int i=1;i<n;i++)
+		printf("%d\t  %d\t\t  %d\t  %d\t  %d\t  %d\t  %d\n",name[i],at[i],bt[i],start[i],wt[i],tat[i],finish[i]);
+	for(int i=0;i<n;i++)
+	{
+		awt+=wt[i];
+		atat+=tat[i];
+	}
+	awt=awt/n;
+	atat=atat/n;
+	printf("Average Waiting time:%f",awt);
+	printf("\nAverage Turn Around Time:%f",atat);
+}

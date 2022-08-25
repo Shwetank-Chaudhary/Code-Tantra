@@ -1,0 +1,12 @@
+print("Enter values for matrix - A")
+m1=int(input("Number of rows, m = "))
+n1=int(input("Number of columns, n = "))
+l=[[int(input("Entry in row: "+str(r)+" column: "+str(c)+'\n'))for c in range(1,n1+1)] for r in range(1,m1+1)]
+print("Enter values for matrix - B")
+m2=int(input("Number of rows, m = "))
+n2=int(input("Number of columns, n = "))
+l2=[[int(input("Entry in row: "+str(r)+" column: "+str(c)+'\n'))for c in range(1,n2+1)]for r in range(1,m2+1)]
+print("Matrix - A =",l)
+print("Matrix - B =",l2)
+ans=[[sum(i*j for i,j in zip(x,y))for y in zip(*l2)]for x in l] 
+print("Matrix - A * Matrix- B =",ans)

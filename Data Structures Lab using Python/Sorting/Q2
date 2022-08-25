@@ -1,0 +1,9 @@
+a=list(map(int,input("Enter the list of numbers: ").split(" ")))
+for i in range(len(a)):
+	mini=a[i]
+	for j in range(i,len(a)):
+		if mini>a[j]:
+			mini,a[j]=a[j],mini
+	a[i],mini=mini,a[i]
+l=list(map(str,a))
+print(l)

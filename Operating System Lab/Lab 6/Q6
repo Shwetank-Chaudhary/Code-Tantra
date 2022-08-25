@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int i=0,memcap,nop,memreq,temp=0,memrem=0;
+	printf("enter the memory capacity:");
+	scanf("%d",&memcap);
+	printf("enter the no of processes:");
+	scanf("%d",&nop);
+	memrem=memcap;
+	while(nop>0)
+	{
+		printf("enter memory req for process%d:",i+1);
+		scanf("%d",&memreq);
+		temp=memreq;
+		if(temp<memcap)
+		{
+			printf("the memory allocated for process%d is: %d \n",i+1,memrem);
+			memrem=memrem-temp;
+			printf("remaining memory is: %d\n", memrem);
+			printf("external fragmentation for this process is:%d\n", memrem);
+		}
+		else
+		{
+			printf("there is no further memory remaining:\n");
+			printf("external fragmentation for this process is:0\n");
+		}
+		i++;
+		nop--;
+	}
+}
+	

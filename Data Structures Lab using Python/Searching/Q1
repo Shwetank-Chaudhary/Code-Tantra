@@ -1,0 +1,10 @@
+x=list(map(int,input("Enter the list of numbers: ").split(' ')))
+n=int(input("The number to search for: "))
+flag=1
+for i in range(len(x)):
+	if x[i]==n:
+		print(x[i],"was found at index "+str(i)+'.')
+		flag=0
+		break
+if flag==1:
+	print(n,"was not found.")

@@ -1,0 +1,57 @@
+#include<conio.h>
+#include<string.h>
+void main()
+{
+	int i,n,y,at[10],bt[10],quant,sum=0,temp[10],count=0,tat[10],wt[10];
+	float totalWT=0,totalTAT=0;
+	printf("Enter Total Number of Processes: ");
+	scanf("%d", &n);
+	y=n;
+	for(i=0; i<n; i++)
+	{
+		printf("Enter Details of Process[%d]: Arrival Time:\t",i+1);
+		scanf("%d", &at[i]);
+		printf("Burst Time:\t");
+		scanf("%d", &bt[i]);
+		temp[i]=bt[i];
+	}
+	printf("Enter Time Quantum:\t");
+	scanf("%d", &quant);
+	printf("Process ID\t\tBurst Time\t Turnaround Time\t Waiting Time\n");
+	for(sum=0, i=0; y!=0;)
+	{
+		if(temp[i]<=quant && temp[i]>0)
+		{
+			sum+=temp[i];
+			temp[i]=0;
+			count=1;
+		}
+		else if(temp[i]>0)
+		{
+			temp[i]-=quant;
+			sum+=quant;
+		}
+		if(temp[i]==0 && count==1)
+		{
+			y--;
+			printf("Process[%d]\t\t%d\t\t %d\t\t\t %d\n",i+1,bt[i],sum-at[i],sum-at[i]-bt[i]);
+			totalWT+=sum-at[i]-bt[i];
+			totalTAT+=sum-at[i];
+			count=0;
+		}
+		if(i==n-1)
+		{
+			i=0;
+		}
+		else if(at[i+1]<=sum)
+		{
+			i++;
+		}
+		else
+		{
+			i=0;
+		}
+	}
+	printf("Average Waiting Time:\t%f\n",totalWT/n);
+	printf("Avg Turnaround Time:\t%f\n",totalTAT/n);
+}

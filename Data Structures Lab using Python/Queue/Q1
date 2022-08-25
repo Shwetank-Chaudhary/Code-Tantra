@@ -1,0 +1,17 @@
+n=int(input("Enter the size of Queue:"))
+op=-1
+a=[]
+while op!=4:
+	print("Select the Operation:\n1.Enqueue 2.Dequeue 3. Display 4. Quit")
+	op=int(input())
+	if op==1:
+		e=int(input("Enter the element:"))
+		a.append(e)
+	elif op==2:
+		a.pop(0)
+	elif op==3:
+		for i in range(len(a)):
+			print(a[i],"")
+	elif op==4:
+		break
+	

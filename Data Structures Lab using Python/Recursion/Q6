@@ -1,0 +1,9 @@
+def towerofhanoi(n,from_source,to_destination,aux_source):
+	if n==1:
+		print("Move disk 1 from source",from_source,"to destination",to_destination)
+		return
+	towerofhanoi(n-1,from_source,aux_source,to_destination)
+	print("Move disk",n,"from source",from_source,"to destination",to_destination)
+	towerofhanoi(n-1,aux_source,to_destination,from_source)
+n=int(input(" enter no of disk"))
+towerofhanoi(n,"A","B","C")

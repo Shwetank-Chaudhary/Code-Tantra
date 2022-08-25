@@ -1,0 +1,24 @@
+def create():
+	stack=[]
+	return stack
+def push(stack):
+	ch=None
+	while ch!="XXX":
+		ch=input("Enter element, 'XXX' to end: ")
+		if ch!="XXX":
+			stack.append(ch)
+	return stack
+def show(stack):
+	print(stack)
+def pop(stack):
+	p=stack.pop()
+	return p
+s1=create()
+s1=push(s1)
+print("Initial stack")
+show(s1)
+print("Elements poped from stack:")
+for i in range(3):
+	print(pop(s1))
+print("Stack after elements are poped:")
+show(s1)
